@@ -110,6 +110,11 @@ img {
   animation: mobile-nav-in 0.18s ease;
 }
 
+/* Hold the page still while the menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
 /* Scrim behind the open menu so content below reads as dimmed, not competing */
 .mobile-nav.open::after {
   content: "";

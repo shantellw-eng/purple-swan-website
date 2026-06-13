@@ -97,6 +97,7 @@
       if (!toggle || !nav) return;
       function setOpen(open) {
         nav.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
         toggle.textContent = open ? 'Close' : 'Menu';
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       }
