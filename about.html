@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Purple Swan</title>
+  <meta name="description" content="Shantell Williams. Around 25 years in technology, most of it in financial services and insurance. Most recently CTO at Tiimely.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Purple Swan">
+  <meta property="og:title" content="About — Purple Swan">
+  <meta property="og:description" content="Shantell Williams. Around 25 years in technology, most of it in financial services and insurance.">
+  <meta property="og:url" content="https://purpleswan.com.au/about.html">
+  <meta property="og:image" content="https://purpleswan.com.au/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="images/swan-black.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Mobile top bar -->
+  <header class="mobile-bar">
+    <a href="index.html" class="brand">Purple Swan</a>
+    <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><span class="nav-code">01</span><a href="index.html">Index</a></li>
+      <li><span class="nav-code">02</span><a href="index.html#practice">Practice</a></li>
+      <li><span class="nav-code">03</span><a href="about.html">About</a></li>
+      <li><span class="nav-code">04</span><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Desktop sidebar -->
+  <aside class="sidebar">
+    <div>
+      <a href="index.html" class="sidebar-brand">
+        <div class="sidebar-brand-label">Independent advisory</div>
+        <div class="sidebar-brand-unit">
+          <img src="images/swan-cream.png" alt="" class="sidebar-brand-mark">
+          <div class="sidebar-brand-name">Purple Swan</div>
+        </div>
+        <div class="sidebar-brand-rule"></div>
+      </a>
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="index.html">
+              <span class="nav-code">01</span>
+              <span class="nav-label">Index</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#practice">
+              <span class="nav-code">02</span>
+              <span class="nav-label">Practice</span>
+            </a>
+          </li>
+          <li>
+            <a href="about.html" class="active">
+              <span class="nav-code">03</span>
+              <span class="nav-label">About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact">
+              <span class="nav-code">04</span>
+              <span class="nav-label">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sidebar-meta">
+      <div>Adelaide // Hybrid</div>
+      <div>© 2026</div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <section class="section">
+      <h1 class="section-label">About // 03</h1>
+
+      <div class="about-grid">
+        <img src="images/profilepic.jpg" alt="Shantell Williams" class="about-photo">
+        <div class="about-bio">
+          <p>I&rsquo;m Shantell Williams. Around 25 years in technology, most of it in financial services and insurance. Most recently CTO at Tiimely for nearly five years, and VP Engineering at EasyEquities for five before that.</p>
+          <p>I work close to the detail, and I&rsquo;m clear about what it means. Engagements are shaped to the situation, not a fixed scope. They run as long as the situation needs. I see things through to the other side. That tends to be what people remember.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-label">Connect // 04</div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-intro">Most engagements start with a conversation.</p>
+          <a href="mailto:shantell@purpleswan.com.au?subject=Let%27s%20connect" class="contact-link">shantell@purpleswan.com.au</a>
+        </div>
+        <div class="contact-meta">
+          <div>Adelaide // Hybrid</div>
+          <div>By introduction or email</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Purple Swan</span>
+      <span>© 2026</span>
+    </footer>
+
+  </main>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.mobile-menu-toggle');
+      var nav = document.querySelector('.mobile-nav');
+      if (!toggle || !nav) return;
+      function setOpen(open) {
+        nav.classList.toggle('open', open);
+        toggle.textContent = open ? 'Close' : 'Menu';
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      toggle.addEventListener('click', function () {
+        setOpen(!nav.classList.contains('open'));
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setOpen(false);
+      });
+    })();
+  </script>
+
+</body>
+</html>

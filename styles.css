@@ -1,0 +1,628 @@
+/* Purple Swan — styles.css */
+
+:root {
+  --background: #f5f0e8;
+  --foreground: #1a1a1a;
+  --muted: #ebe5da;
+  --muted-foreground: #5a5550;
+  --border: rgba(26, 26, 26, 0.12);
+  --sidebar: #261032;
+  --sidebar-foreground: #f5f0e8;
+  --sidebar-muted-foreground: #cdb8c5;
+  --accent: #4a2c5a;
+  --accent-deep: #5d3573;
+  --accent-foreground: #f5f0e8;
+
+  --sidebar-width: 16rem;
+  --content-padding: clamp(1.5rem, 6vw, 6rem);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: "kern" 1, "calt" 1;
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+/* Mobile top bar */
+
+.mobile-bar {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: rgba(245, 240, 232, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-bar .brand {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.mobile-menu-toggle {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-nav {
+  display: none;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 1.5rem 1.25rem;
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav li {
+  display: flex;
+  gap: 1rem;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.mobile-nav li:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-nav .nav-code {
+  color: var(--muted-foreground);
+}
+
+.mobile-nav a {
+  text-decoration: none;
+  color: var(--foreground);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav a:hover {
+  color: var(--accent);
+}
+
+
+/* Desktop sidebar */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  background: linear-gradient(180deg, #2b1238 0%, #221028 100%);
+  color: var(--sidebar-foreground);
+  border-right: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 40;
+}
+
+.sidebar-brand {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.sidebar-brand-label {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sidebar-muted-foreground);
+}
+
+.sidebar-brand-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.625rem;
+}
+
+.sidebar-brand-mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.sidebar-brand-name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--sidebar-foreground);
+  margin: 0;
+}
+
+.sidebar-brand-rule {
+  margin-top: 0.625rem;
+  width: 2.5rem;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.sidebar-nav {
+  margin-top: 4rem;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 1.25rem;
+}
+
+.sidebar-nav li:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--sidebar-muted-foreground);
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: var(--sidebar-foreground);
+}
+
+.sidebar-nav .nav-code {
+  color: var(--sidebar-muted-foreground);
+  opacity: 0.7;
+}
+
+.sidebar-nav .nav-label {
+  position: relative;
+}
+
+.sidebar-nav a.active {
+  color: var(--sidebar-foreground);
+}
+
+.sidebar-nav a.active .nav-label::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.sidebar-meta {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sidebar-muted-foreground);
+  line-height: 1.8;
+}
+
+
+/* Main content area */
+
+.main {
+  margin-left: var(--sidebar-width);
+}
+
+.section {
+  padding: 6rem var(--content-padding) 6rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.section-label {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+
+/* Hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 56rem;
+}
+
+.tagline {
+  margin: 2.5rem 0 0;
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: var(--foreground);
+}
+
+.intro-body {
+  margin: 3rem 0 0;
+  max-width: 36rem;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+
+/* Practice section */
+
+.practice-intro {
+  margin: 2.5rem 0 0;
+  max-width: 36rem;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+.practice-list {
+  margin: 2.5rem 0 0;
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.practice-list li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 3rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.practice-list li:last-child {
+  border-bottom: none;
+}
+
+.practice-code {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  padding-top: 0.25rem;
+}
+
+.practice-outcome {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--foreground);
+  margin: 0;
+  max-width: 36rem;
+}
+
+.practice-method {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.65;
+  max-width: 36rem;
+}
+
+
+/* Closing line */
+
+.closing {
+  padding: 4rem var(--content-padding) 5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.closing-line {
+  margin: 0;
+  max-width: 48rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  position: relative;
+  padding-top: 2rem;
+}
+
+.closing-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--accent-deep);
+}
+
+
+/* Contact section */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: end;
+  margin-top: 2.5rem;
+}
+
+.contact-intro {
+  max-width: 28rem;
+  margin: 0 0 2rem;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.contact-link {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.contact-meta {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  text-align: right;
+  line-height: 2;
+}
+
+/* On desktop the sidebar already carries the location; avoid the echo */
+.contact-location {
+  display: none;
+}
+
+
+/* Footer */
+
+.footer {
+  padding: 2.5rem var(--content-padding);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+
+/* About page */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 56rem;
+  margin-top: 2.5rem;
+}
+
+.about-photo {
+  width: 12rem;
+  height: 15rem;
+  object-fit: cover;
+  background-color: var(--muted);
+}
+
+.about-bio {
+  max-width: 36rem;
+}
+
+.about-bio p {
+  margin: 0 0 1.25em;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+.about-bio p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Larger screens */
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 8rem var(--content-padding) 8rem;
+  }
+
+  .tagline {
+    font-size: 2.5rem;
+  }
+
+  .closing-line {
+    font-size: 2rem;
+  }
+
+  .contact-link {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .mobile-bar {
+    display: flex;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .section {
+    padding: 3.5rem var(--content-padding);
+    scroll-margin-top: 4.5rem;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+  }
+
+  .practice-list li {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .practice-code {
+    padding-top: 0;
+  }
+
+  .closing-line {
+    font-size: 1.25rem;
+  }
+
+  .closing {
+    padding: 3rem var(--content-padding);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-link {
+    font-size: 1.125rem;
+  }
+
+  .contact-meta {
+    text-align: left;
+  }
+
+  /* Sidebar is hidden on mobile, so the contact block carries the location */
+  .contact-location {
+    display: block;
+  }
+
+  .footer {
+    padding: 2rem var(--content-padding);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+
+/* Print */
+
+@media print {
+  .sidebar, .mobile-bar, .mobile-nav {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .hero-bg {
+    display: none;
+  }
+}
