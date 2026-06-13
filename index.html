@@ -2,7 +2,7 @@
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Purple Swan - Independent Technology Advisory</title>
   <meta name="description" content="Independent technology advisory. A technology executive on your side of the table, in the room before the decision. Adelaide, hybrid.">
 
@@ -24,7 +24,7 @@
 
   <!-- Mobile top bar -->
   <header class="mobile-bar">
-    <a href="index.html" class="brand">Purple Swan</a>
+    <a href="index.html" class="brand"><img src="images/swan-cream.png" alt="" class="brand-mark">Purple Swan</a>
     <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
   </header>
   <nav class="mobile-nav" id="mobile-nav">
@@ -35,6 +35,7 @@
       <li><span class="nav-code">04</span><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+  <div class="mobile-scrim" aria-hidden="true"></div>
 
   <!-- Desktop sidebar -->
   <aside class="sidebar">
@@ -171,8 +172,10 @@
       var toggle = document.querySelector('.mobile-menu-toggle');
       var nav = document.querySelector('.mobile-nav');
       if (!toggle || !nav) return;
+      var scrim = document.querySelector('.mobile-scrim');
       function setOpen(open) {
         nav.classList.toggle('open', open);
+        if (scrim) scrim.classList.toggle('open', open);
         document.body.classList.toggle('menu-open', open);
         toggle.textContent = open ? 'Close' : 'Menu';
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
