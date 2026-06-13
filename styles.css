@@ -63,10 +63,11 @@ img {
   position: sticky;
   top: 0;
   z-index: 40;
+  height: 3.5rem;
   background-color: rgba(245, 240, 232, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  padding: 1rem 1.25rem;
+  padding: 0 1.25rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -94,13 +95,38 @@ img {
 
 .mobile-nav {
   display: none;
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  right: 0;
+  z-index: 39;
   border-bottom: 1px solid var(--border);
-  background-color: var(--background);
+  background-color: rgba(245, 240, 232, 0.98);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 24px rgba(26, 16, 40, 0.12);
   padding: 1.5rem 1.25rem;
 }
 
 .mobile-nav.open {
   display: block;
+  animation: mobile-nav-in 0.18s ease;
+}
+
+/* Scrim behind the open menu so content below reads as dimmed, not competing */
+.mobile-nav.open::after {
+  content: "";
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: rgba(26, 16, 40, 0.28);
+  pointer-events: none;
+}
+
+@keyframes mobile-nav-in {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .mobile-nav ul {
