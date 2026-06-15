@@ -378,6 +378,14 @@ body.menu-open {
   line-height: 1.7;
 }
 
+.hero-statement {
+  margin: 2rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
 
 /* Practice section */
 
