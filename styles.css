@@ -519,11 +519,6 @@ body.menu-open {
   line-height: 2;
 }
 
-/* On desktop the sidebar already carries the location; avoid the echo */
-.contact-location {
-  display: none;
-}
-
 
 /* Footer */
 
@@ -646,11 +641,6 @@ body.menu-open {
 
   .contact-meta {
     text-align: left;
-  }
-
-  /* Sidebar is hidden on mobile, so the contact block carries the location */
-  .contact-location {
-    display: block;
   }
 
   .footer {
